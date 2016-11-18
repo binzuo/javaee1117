@@ -1,0 +1,11 @@
+CREATE DATABASE IF NOT EXISTS Yonghu;
+DROP TABLE IF EXISTS Yonghu.message;
+CREATE TABLE Yonghu.message(
+  id INT AUTO_INCREMENT PRIMARY KEY ,
+  email VARCHAR(255) NOT NULL ,
+  password VARCHAR(255) NOT NULL ,
+  cities VARCHAR(255),
+  hobbies VARCHAR(255)
+)COMMENT '用户信息表';
+SELECT *
+FROM Yonghu.message;
