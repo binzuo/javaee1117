@@ -18,11 +18,12 @@
     <input type="submit" value="Login">
   </form>
   <%
-    if (session.getAttribute("您好：")!=null){
-      out.println(session.getAttribute("您好："));
+    if (request.getAttribute("message")!=null){
+      out.println(request.getAttribute("message"));
     }else {
       out.println();
     }
   %>
+
   </body>
 </html>

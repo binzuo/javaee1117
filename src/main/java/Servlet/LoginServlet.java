@@ -1,8 +1,10 @@
 package Servlet;
 
 import com.mysql.jdbc.Driver;
+import util.DB;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,33 +14,40 @@ import java.sql.*;
 /**
  * Created by Administrator on 2016/11/18 0018.
  */
+@WebServlet(urlPatterns ="/login")
 public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String email=request.getParameter("email");
+        String email=request.getParameter("email").trim().toLowerCase();
         String password=request.getParameter("password");
+        Connection connection=null;
+        PreparedStatement preparedStatement=null;
+        ResultSet resultSet=null;
 
         try {
             new Driver();
-            Connection connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/Yonghu?user=root&password=xinabcd1234");
+            connection= DB.getConnection();
             String sql="SELECT * FROM Yonghu.message WHERE email=? AND password=?";
-            PreparedStatement p=connection.prepareStatement(sql);
-            p.setString(1,email);
-            p.setString(2,password);
-            ResultSet r=p.executeQuery();
+             preparedStatement=connection.prepareStatement(sql);
+            preparedStatement.setString(1,email);
+            preparedStatement.setString(2,password);
+            resultSet=preparedStatement.executeQuery();
 
-            if (r.next()){
-                request.getSession().setAttribute("welcome","欢迎您："+email);
+            if (resultSet.next()){
+                request.getSession().setAttribute("email",email);
+
+                request.getSession().setAttribute("welcome","欢迎您"+email);
                 response.sendRedirect("home.jsp");
             }else {
-                request.getSession().setAttribute("您好：","您输入的账号或密码不正确");
-                response.sendRedirect("index.jsp");
+                request.setAttribute("message","您输入的账号或密码不正确");
+                request.getRequestDispatcher("index.jsp").forward(request, response);
             }
+
             connection.close();
-            p.close();
-            r.close();
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            DB.close(resultSet,preparedStatement,connection);
         }
 
     }
