@@ -12,9 +12,10 @@
   </head>
   <body>
   <a href="signup.jsp">Sign Up</a>
-  <form action="/login" method="post">
-    <input type="text" name="email" placeholder="EMAIL">eamil<br>
-    <input type="password" name="password" placeholder="PASSWORD"><br>
+  <form action="/user" method="post">
+    <input type="hidden" name="actionA" value="login">
+    <input type="text" name="email" placeholder="EMAIL" value="18310996173xiaozuo@gmail.com">eamil<br>
+    <input type="password" name="password" placeholder="PASSWORD" value="xinabcd3388725"><br>
     <input type="submit" value="Login">
   </form>
   <%

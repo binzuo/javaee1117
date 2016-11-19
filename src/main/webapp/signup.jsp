@@ -11,9 +11,10 @@
     <title>signup</title>
 </head>
 <body>
-<form action="/register" method="post">
-    <input type="text" name="email" placeholder="EMAIL">email<br>
-    <input type="password" name="password" placeholder="PASSEORD">password<br>
+<form action="/user" method="post">
+    <input type="hidden" name="actionA" value="register">
+    <input type="text" name="email" placeholder="EMAIL" value="18310996173xiaozuo@gmail.com">email<br>
+    <input type="password" name="password" placeholder="PASSEORD" value="xinabcd3388725">password<br>
     <select name="cities" multiple="multiple" >
         <option  value="Beijing" >Beijing</option>
         <option  value="Hengshui" selected="selected">Hengshui</option>
