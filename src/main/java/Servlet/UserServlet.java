@@ -85,7 +85,7 @@ public class UserServlet extends HttpServlet {
                 request.getSession().setAttribute("email",email);
 
                 request.getSession().setAttribute("welcome","欢迎您"+email);
-                response.sendRedirect("home.jsp");
+                response.sendRedirect("/book?actionB=chaXun");
             }else {
                 request.setAttribute("message","您输入的账号或密码不正确");
                 request.getRequestDispatcher("index.jsp").forward(request, response);

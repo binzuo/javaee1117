@@ -42,7 +42,7 @@
         </c:when>
         <c:otherwise>
             <tr>
-                <th>ID</th>
+                <th>顺序</th>
                 <th>TITLE</th>
                 <th>AUTHOR</th>
                 <th>PUBLISH</th>
@@ -62,8 +62,8 @@
             <td>${book.date}</td>
             <td>${book.price}</td>
             <td>${book.amount}</td>
-            <td><a href="">MODIFY</a></td>
-            <td><a href="">REMOVE</a></td>
+            <td><a href="/book?actionB=search&id=${book.id}">MODIFY</a></td>
+            <td><a href="/book?actionB=remove&id=${book.id}">REMOVE</a></td>
         </tr>
     </c:forEach>
 
