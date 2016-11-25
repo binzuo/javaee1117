@@ -5,13 +5,7 @@
     <title>edit page</title>
 </head>
 <body>
-<c:if test="${sessionScope.email eq null}">
-    <c:redirect url="index.jsp"/>
-</c:if>
 <h1>edit page</h1>
-${sessionScope.email}
-<a href="/user?action=logout">LOG OUT</a>
-<hr>
 <form action="/book" method="post">
     <input type="hidden" name="actionB" value="update">
     <input type="hidden" name="id" value="${sessionScope.book.id}">

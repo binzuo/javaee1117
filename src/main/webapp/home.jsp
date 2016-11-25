@@ -26,12 +26,13 @@
 <h1><b>南无日光遍照菩萨摩诃萨</b></h1>
 <form action="/book" method="post">
     <input type="hidden" name="actionB" value="register">
-    <input type="text" name="title" placeholder="TITLE" value="title"><br>
-    <input type="text" name="author" placeholder="AUTHOR" value="author..."><br>
-    <input type="text" name="publish" placeholder="PUBLISH" value="publish..."><br>
+    <input type="text" name="title" placeholder="TITLE" value="《地藏菩萨本愿经》"><br>
+    <input type="text" name="author" placeholder="AUTHOR" value="唐于阗国三藏沙门实叉难陀译
+"><br>
+    <input type="text" name="publish" placeholder="PUBLISH" value="佛门"><br>
     <input type="text" name="date" placeholder="DATE" value="2016-11-1"><br>
-    <input type="text" name="price" placeholder="PRICE" value="50.00"><br>
-    <input type="text" name="amount" placeholder="AMOUNT" value="10"><br>
+    <input type="text" name="price" placeholder="PRICE" value="100.00"><br>
+    <input type="text" name="amount" placeholder="AMOUNT" value="1000"><br>
     <input type="submit" value="ADD">
 </form>
 <h2>Books Lists</h2>
@@ -43,13 +44,13 @@
         <c:otherwise>
             <tr>
                 <th>顺序</th>
-                <th>TITLE</th>
-                <th>AUTHOR</th>
-                <th>PUBLISH</th>
-                <th>DATE</th>
-                <th>PRICE</th>
-                <th>AMOUNT</th>
-                <th colspan="2">OPERATION</th>
+                <th>书名</th>
+                <th>作者</th>
+                <th>出版社</th>
+                <th>出版日期</th>
+                <th>价格</th>
+                <th>数量</th>
+                <th colspan="2">操作选项</th>
             </tr>
         </c:otherwise>
     </c:choose>
@@ -62,8 +63,8 @@
             <td>${book.date}</td>
             <td>${book.price}</td>
             <td>${book.amount}</td>
-            <td><a href="/book?actionB=search&id=${book.id}">MODIFY</a></td>
-            <td><a href="/book?actionB=remove&id=${book.id}">REMOVE</a></td>
+            <td><a href="/book?actionB=search&id=${book.id}">修改</a></td>
+            <td><a href="/book?actionB=remove&id=${book.id}">移除</a></td>
         </tr>
     </c:forEach>
 
