@@ -22,5 +22,3 @@ CREATE TABLE Yonghu.book(
 SELECT *
 FROM Yonghu.book;
 
-SELECT *
-FROM Yonghu.message;
